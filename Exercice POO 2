@@ -1,0 +1,52 @@
+import random
+
+
+class NPC:
+    def __init__(self, nom, race, espèce, profession):
+        self.force = max([random.randint(1, 6) for i in range(4)]) + 3
+        self.agilité = max([random.randint(1, 6) for i in range(4)]) + 3
+        self.constitution = max([random.randint(1, 6) for i in range(4)]) + 3
+        self.intelligence = max([random.randint(1, 6) for i in range(4)]) + 3
+        self.sagesse = max([random.randint(1, 6) for i in range(4)]) + 3
+        self.charisme = max([random.randint(1, 6) for i in range(4)]) + 3
+        self.classe_d_armure = random.randint(1, 12)
+        self.nom = nom
+        self.race = race
+        self.espèce = espèce
+        self.profession = profession
+        self.point_de_vie = random.randint(1, 20) + 10
+
+    def afficher_caracteristiques(self):
+        print("Nom:", self.nom)
+        print("Race:", self.race)
+        print("Espèce:", self.espèce)
+        print("Profession:", self.profession)
+        print("Force:", self.force)
+        print("Agilité:", self.agilité)
+        print("Constitution:", self.constitution)
+        print("Intelligence:", self.intelligence)
+        print("Sagesse:", self.sagesse)
+        print("Charisme:", self.charisme)
+        print("Classe d'armure:", self.classe_d_armure)
+        print("Point de vie:", self.point_de_vie)
+
+
+class Kobold(NPC):
+    def attaquer(self, cible):
+        dommage = random.randint(1, 6) + 2
+        cible.subir_dommage(dommage)
+
+    def subir_dommage(self, dommage):
+        self.point_de_vie -= dommage
+        print(f"{self.nom} a subi {dommage} points de dommage et a maintenant {self.point_de_vie} points de vie.")
+
+
+class Héros(NPC):
+    def attaquer(self, cible):
+        dommage = random.randint(1, 6) + 5
+        cible.subir_dommage(dommage)
+
+    def subir_dommage(self, dommage):
+        self.point_de_vie -= dommage
+        print(f"{self.nom} a subi {dommage} points de dommage et a maintenant {self.point_de_vie} points de vie.")
+
