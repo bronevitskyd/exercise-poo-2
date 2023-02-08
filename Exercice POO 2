@@ -1,8 +1,8 @@
-import random
+import random #importation du module random dans python
 
 
-class NPC:
-    def __init__(self, nom, race, espèce, profession):
+class NPC: #creation de notre classe NPC
+    def __init__(self, nom, race, espèce, profession): #definir les parametres ainsi que creation des classes
         self.force = max([random.randint(1, 6) for i in range(4)]) + 3
         self.agilité = max([random.randint(1, 6) for i in range(4)]) + 3
         self.constitution = max([random.randint(1, 6) for i in range(4)]) + 3
@@ -16,7 +16,7 @@ class NPC:
         self.profession = profession
         self.point_de_vie = random.randint(1, 20) + 10
 
-    def afficher_caracteristiques(self):
+    def afficher_caracteristiques(self): #afficher les carachteristiques
         print("Nom:", self.nom)
         print("Race:", self.race)
         print("Espèce:", self.espèce)
@@ -31,8 +31,8 @@ class NPC:
         print("Point de vie:", self.point_de_vie)
 
 
-class Kobold(NPC):
-    def attaquer(self, cible):
+class Kobold(NPC): #creation de la classe Kobold
+    def attaquer(self, cible): #def attaquer, dommande, point de vie 
         dommage = random.randint(1, 6) + 2
         cible.subir_dommage(dommage)
 
@@ -41,12 +41,12 @@ class Kobold(NPC):
         print(f"{self.nom} a subi {dommage} points de dommage et a maintenant {self.point_de_vie} points de vie.")
 
 
-class Héros(NPC):
+class Héros(NPC): #class Heros npc 
     def attaquer(self, cible):
         dommage = random.randint(1, 6) + 5
         cible.subir_dommage(dommage)
 
-    def subir_dommage(self, dommage):
+    def subir_dommage(self, dommage): 
         self.point_de_vie -= dommage
         print(f"{self.nom} a subi {dommage} points de dommage et a maintenant {self.point_de_vie} points de vie.")
 
